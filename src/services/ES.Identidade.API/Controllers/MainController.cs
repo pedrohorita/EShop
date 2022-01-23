@@ -18,7 +18,7 @@ namespace ES.Identidade.API.Controllers
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                { "Messagens", Erros.ToArray()}
+                { "Mensagens", Erros.ToArray()}
             }));
         }
 
