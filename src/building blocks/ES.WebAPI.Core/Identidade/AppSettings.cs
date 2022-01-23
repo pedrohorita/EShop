@@ -1,4 +1,4 @@
-﻿namespace ES.Identidade.API.Extensions
+﻿namespace ES.WebAPI.Core.Identidade
 {
     public class AppSettings
     {

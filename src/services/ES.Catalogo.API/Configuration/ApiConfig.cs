@@ -1,4 +1,5 @@
 ﻿using ES.Catalogo.API.Data;
+using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,8 @@ namespace ES.Catalogo.API.Configuration
             app.UseRouting();
 
             app.UseCors("Total");
+
+            app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {

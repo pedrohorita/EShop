@@ -41,7 +41,7 @@ namespace ES.Catalogo.API.Configuration
                                 Id = "Bearer"
                             }
                         },
-                        new string[] {}
+                        Array.Empty<string>()
                     }
                 });
 

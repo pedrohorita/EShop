@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\building blocks\ES.Core\ES.Core.csproj" />
+    <ProjectReference Include="..\..\building blocks\ES.WebAPI.Core\ES.WebAPI.Core.csproj" />
   </ItemGroup>
 
 </Project>

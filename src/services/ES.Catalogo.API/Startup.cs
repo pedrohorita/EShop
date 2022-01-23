@@ -1,5 +1,6 @@
 using ES.Catalogo.API.Configuration;
 using ES.Catalogo.API.Data;
+using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,9 @@ namespace ES.Catalogo.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApiConfiguration(Configuration);            
+            services.AddApiConfiguration(Configuration);
+
+            services.AddJwtConfiguration(Configuration);            
 
             services.AddSwaggerConfiguration();
 
