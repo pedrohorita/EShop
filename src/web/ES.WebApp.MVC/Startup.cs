@@ -30,7 +30,7 @@ namespace ES.WebApp.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityConfiguration();
-            services.RegisterServices();
+            services.RegisterServices(Configuration);
 
             services.AddMvcConfiguration(Configuration);
         }
