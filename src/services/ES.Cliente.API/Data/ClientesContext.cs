@@ -1,5 +1,7 @@
-﻿using ES.Clientes.API.Models;
+﻿using ES.Clientes.API.Data.Extensions;
+using ES.Clientes.API.Models;
 using ES.Core.Data.Interfaces;
+using ES.Core.Mediator.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +10,11 @@ namespace ES.Clientes.API.Data
 {
     public sealed class ClientesContext : DbContext, IUnitOfWork
     {
-        public ClientesContext(DbContextOptions<ClientesContext> options) 
+        private readonly IMediatorHandler _mediatorHandler;
+        public ClientesContext(DbContextOptions<ClientesContext> options, IMediatorHandler mediatorHandler) 
             :base(options)
         {
+            _mediatorHandler = mediatorHandler;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
@@ -33,6 +37,8 @@ namespace ES.Clientes.API.Data
         public async Task<bool> Commit()
         {
             var sucesso = await base.SaveChangesAsync() > 0;
+            if (sucesso) 
+                await _mediatorHandler.PublicarEventos(this);
 
             return sucesso;
         }
