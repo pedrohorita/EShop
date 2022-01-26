@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Polly;
 using System;
 using ES.WebApp.MVC.Extensions;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace ES.WebApp.MVC.Configuration
 {
@@ -14,6 +15,8 @@ namespace ES.WebApp.MVC.Configuration
     {
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton<IValidationAttributeAdapterProvider, CpfValidationAttributeAdapterProvider>();
+
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
