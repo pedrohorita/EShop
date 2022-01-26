@@ -1,5 +1,5 @@
-﻿using ES.Identidade.API.Extensions;
-using ES.Identidade.API.Models;
+﻿using ES.Identidade.API.Models;
+using ES.WebAPI.Core.Controllers;
 using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

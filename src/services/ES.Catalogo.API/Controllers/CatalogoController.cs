@@ -1,5 +1,6 @@
 ﻿using ES.Catalogo.API.Data.Interfaces;
 using ES.Catalogo.API.Models;
+using ES.WebAPI.Core.Controllers;
 using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ES.Catalogo.API.Controllers
 {
-    [ApiController]
+
     [Authorize]
-    public class CatalogoController : Controller
+    public class CatalogoController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;
 
