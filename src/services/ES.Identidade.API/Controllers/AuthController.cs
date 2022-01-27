@@ -1,4 +1,6 @@
-﻿using ES.Identidade.API.Models;
+﻿using ES.Core.Messages.Integration;
+using ES.Identidade.API.Models;
+using ES.MessageBus.Interfaces;
 using ES.WebAPI.Core.Controllers;
 using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
@@ -22,13 +24,17 @@ namespace ES.Identidade.API.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
 
+        private readonly IMessageBus _bus;
+
         public AuthController(SignInManager<IdentityUser> signInManager, 
                               UserManager<IdentityUser> userManager, 
-                              IOptions<AppSettings> appSettings)
+                              IOptions<AppSettings> appSettings,
+                              IMessageBus bus)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value;
+            _bus = bus;
         }
 
 
@@ -47,11 +53,23 @@ namespace ES.Identidade.API.Controllers
 
             var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
 
-            if (result.Succeeded) 
-                return CustomResponse(await GerarJwt(usuarioRegistro.Email));
+            if (result.Succeeded)
+            {
+                var clienteResult = await RegistrarCliente(usuarioRegistro);
 
-            foreach (var erro in result.Errors)
-                AdicionarErroProcessamento(erro.Description);
+                if (!clienteResult.ValidationResult.IsValid)
+                {
+                    await _userManager.DeleteAsync(user);
+                    return CustomResponse(clienteResult.ValidationResult);
+                }
+
+                return CustomResponse(await GerarJwt(usuarioRegistro.Email));
+            }
+
+            foreach (var error in result.Errors)
+            {
+                AdicionarErroProcessamento(error.Description);
+            }
 
             return CustomResponse();
         }
@@ -72,6 +90,24 @@ namespace ES.Identidade.API.Controllers
 
             AdicionarErroProcessamento("Usuário ou senha incorretos");
             return CustomResponse();
+        }
+
+        private async Task<ResponseMessage> RegistrarCliente(UsuarioRegistro usuarioRegistro)
+        {
+            var usuario = await _userManager.FindByEmailAsync(usuarioRegistro.Email);
+
+            var usuarioRegistrado = new UsuarioRegistradoIntegrationEvent(
+                Guid.Parse(usuario.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf);
+
+            try
+            {
+                return await _bus.RequestAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(usuarioRegistrado);
+            }
+            catch
+            {
+                await _userManager.DeleteAsync(usuario);
+                throw;
+            }
         }
 
         private async Task<UsuarioRespostaLogin> GerarJwt(string email)
