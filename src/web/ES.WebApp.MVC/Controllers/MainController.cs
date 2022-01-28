@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ES.WebApp.MVC.Controllers
 {
-    public abstract class MainController : Controller
+    public class MainController : Controller
     {
         protected bool ResponsePossuiErros(ResponseResult resposta)
         {
@@ -19,6 +19,16 @@ namespace ES.WebApp.MVC.Controllers
             }
 
             return false;
+        }
+
+        protected void AdicionarErroValidacao(string mensagem)
+        {
+            ModelState.AddModelError(string.Empty, mensagem);
+        }
+
+        protected bool OperacaoValida()
+        {
+            return ModelState.ErrorCount == 0;
         }
     }
 }
