@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ES.WebApp.MVC.Interfaces
+namespace ES.WebAPI.Core.Usuario.Interfaces
 {
-    public interface IUser
+    public  interface IAspNetUser
     {
         string Name { get; }
         Guid ObterUserId();

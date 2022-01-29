@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ES.WebApp.MVC.Interfaces
 @using ES.WebApp.MVC.Extensions
-@inject IUser AppUser
+@using ES.WebAPI.Core.Usuario.Interfaces;
+@inject IAspNetUser AppUser
 
 @if (AppUser.EstaAutenticado())
 {

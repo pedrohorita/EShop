@@ -8,6 +8,8 @@ using Polly;
 using System;
 using ES.WebApp.MVC.Extensions;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using ES.WebAPI.Core.Usuario.Interfaces;
+using ES.WebAPI.Core.Usuario;
 
 namespace ES.WebApp.MVC.Configuration
 {
@@ -31,7 +33,7 @@ namespace ES.WebApp.MVC.Configuration
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IUser, AspNetUser>();
+            services.AddScoped<IAspNetUser, AspNetUser>();
 
 
             #region Refit
