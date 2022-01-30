@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace ES.WebApp.MVC.Interfaces
+namespace ES.WebAPI.Core.Usuario
 {
     public static class ClaimsPrincipalExtensions
     {
@@ -12,7 +12,7 @@ namespace ES.WebApp.MVC.Interfaces
                 throw new ArgumentException(nameof(principal));
             }
 
-            var claim = principal.FindFirst("sub");
+            var claim = principal.FindFirst(ClaimTypes.NameIdentifier);
             return claim?.Value;
         }
 

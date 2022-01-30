@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ES.WebAPI.Core.Usuario.Interfaces
 {
-    public  interface IAspNetUser
+    public interface IAspNetUser
     {
         string Name { get; }
         Guid ObterUserId();
