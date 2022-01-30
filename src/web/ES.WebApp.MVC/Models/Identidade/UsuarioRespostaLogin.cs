@@ -1,4 +1,6 @@
 ﻿
+using ES.Core.Communication;
+
 namespace ES.WebApp.MVC.Models
 {
     public class UsuarioRespostaLogin

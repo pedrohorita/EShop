@@ -1,4 +1,5 @@
-﻿using ES.WebApp.MVC.Models;
+﻿using ES.Core.Communication;
+using ES.WebApp.MVC.Models;
 using System;
 using System.Threading.Tasks;
 

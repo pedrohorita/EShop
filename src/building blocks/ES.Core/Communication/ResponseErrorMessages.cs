@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ES.WebApp.MVC.Models
+namespace ES.Core.Communication
 {
     public class ResponseErrorMessages
     {
@@ -8,6 +8,7 @@ namespace ES.WebApp.MVC.Models
         {
             Mensagens = new List<string>();
         }
+
         public List<string> Mensagens { get; set; }
     }
 }

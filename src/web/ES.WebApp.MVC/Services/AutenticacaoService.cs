@@ -1,4 +1,5 @@
-﻿using ES.WebApp.MVC.Extensions;
+﻿using ES.Core.Communication;
+using ES.WebApp.MVC.Extensions;
 using ES.WebApp.MVC.Interfaces;
 using ES.WebApp.MVC.Models;
 using Microsoft.Extensions.Options;

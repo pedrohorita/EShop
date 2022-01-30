@@ -1,4 +1,5 @@
-﻿using ES.WebApp.MVC.Models;
+﻿using ES.Core.Communication;
+using ES.WebApp.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace ES.Clientes.API.Configuration
+namespace ES.Bff.Compras.Configuration
 {
     public static class SwaggerConfig
     {
@@ -13,8 +13,8 @@ namespace ES.Clientes.API.Configuration
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "EShop Cliente API",
-                    Description = "API de Clientes do comercio eletrônico. ",
+                    Title = "EShop API Gateway/BFF",
+                    Description = "API Gateway/BFF do comercio eletrônico. ",
                     Contact = new OpenApiContact() { Name = "Pedro Horita", Email = "contato@gmail.com" },
                     License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") },
                     Version = "v1"

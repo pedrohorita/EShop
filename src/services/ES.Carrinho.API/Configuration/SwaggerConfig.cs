@@ -13,7 +13,7 @@ namespace ES.Carrinho.API.Configuration
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "EShop Catálogo API",
+                    Title = "EShop Carrinho API",
                     Description = "API de Carrinho do comercio eletrônico. ",
                     Contact = new OpenApiContact() { Name = "Pedro Horita", Email = "contato@gmail.com" },
                     License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") },
