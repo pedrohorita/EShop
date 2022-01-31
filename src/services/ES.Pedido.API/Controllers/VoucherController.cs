@@ -2,7 +2,6 @@
 using ES.Pedidos.API.Application.Queries.Interfaces;
 using ES.WebAPI.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
@@ -24,7 +23,8 @@ namespace ES.Pedidos.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> ObterPorCodigo(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo)) return NotFound();
+            if (string.IsNullOrEmpty(codigo)) 
+                return NotFound();
 
             var voucher = await _voucherQueries.ObterVoucherPorCodigo(codigo);
 
