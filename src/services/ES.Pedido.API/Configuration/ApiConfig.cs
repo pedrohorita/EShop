@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ES.Pedido.API.Configuration
+namespace ES.Pedidos.API.Configuration
 {
     public static class ApiConfig
     {

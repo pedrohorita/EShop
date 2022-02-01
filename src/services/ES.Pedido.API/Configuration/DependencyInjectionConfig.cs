@@ -10,7 +10,7 @@ using ES.WebAPI.Core.Usuario.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ES.Pedido.API.Configuration
+namespace ES.Pedidos.API.Configuration
 {
     public static class DependencyInjectionConfig
     {

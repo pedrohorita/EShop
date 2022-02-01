@@ -1,4 +1,4 @@
-using ES.Pedido.API.Configuration;
+using ES.Pedidos.API.Configuration;
 using ES.WebAPI.Core.Identidade;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 
-namespace ES.Pedido.API
+namespace ES.Pedidos.API
 {
     public class Startup
     {

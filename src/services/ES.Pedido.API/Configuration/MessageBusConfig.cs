@@ -3,7 +3,7 @@ using ES.MessageBus.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ES.Pedido.API.Configuration
+namespace ES.Pedidos.API.Configuration
 {
     public static class MessageBusConfig
     {

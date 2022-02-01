@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace ES.Pedido.API.Configuration
+namespace ES.Pedidos.API.Configuration
 {
     public static class SwaggerConfig
     {
