@@ -43,7 +43,8 @@ namespace ES.WebApp.MVC.Services
 
             var response = await _httpClient.PostAsync("/compras/carrinho/items/", itemContent);
 
-            if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
+            if (!TratarErrosResponse(response)) 
+                return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
         }
@@ -53,7 +54,8 @@ namespace ES.WebApp.MVC.Services
 
             var response = await _httpClient.PutAsync($"/compras/carrinho/items/{produtoId}", itemContent);
 
-            if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
+            if (!TratarErrosResponse(response)) 
+                return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
         }
@@ -61,7 +63,8 @@ namespace ES.WebApp.MVC.Services
         {
             var response = await _httpClient.DeleteAsync($"/compras/carrinho/items/{produtoId}");
 
-            if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
+            if (!TratarErrosResponse(response)) 
+                return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
         }
@@ -71,7 +74,8 @@ namespace ES.WebApp.MVC.Services
 
             var response = await _httpClient.PostAsync("/compras/carrinho/aplicar-voucher/", itemContent);
 
-            if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
+            if (!TratarErrosResponse(response)) 
+                return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
         }
