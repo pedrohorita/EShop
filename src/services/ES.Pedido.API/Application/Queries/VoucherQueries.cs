@@ -1,6 +1,6 @@
-﻿using ES.Pedido.Domain.Interfaces;
-using ES.Pedidos.API.Application.DTO;
+﻿using ES.Pedidos.API.Application.DTO;
 using ES.Pedidos.API.Application.Queries.Interfaces;
+using ES.Pedidos.Domain.Interfaces;
 using System.Threading.Tasks;
 
 namespace ES.Pedidos.API.Application.Queries

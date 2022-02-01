@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ES.Pedido.Infra.Extensions
+namespace ES.Pedidos.Infra.Extensions
 {
     public static class MediatorExtension
     {

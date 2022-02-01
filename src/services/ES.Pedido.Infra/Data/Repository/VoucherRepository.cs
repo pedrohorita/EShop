@@ -1,14 +1,10 @@
 ﻿using ES.Core.Data.Interfaces;
-using ES.Pedido.Domain.Interfaces;
-using ES.Pedido.Domain.Vouchers;
+using ES.Pedidos.Domain.Interfaces;
+using ES.Pedidos.Domain.Vouchers;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ES.Pedido.Infra.Data.Repository
+namespace ES.Pedidos.Infra.Data.Repository
 {
     public class VoucherRepository : IVoucherRepository
     {

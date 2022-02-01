@@ -1,9 +1,9 @@
-﻿using ES.Pedido.Domain.Vouchers;
+﻿using ES.Pedidos.Domain.Vouchers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
-namespace ES.Pedido.Infra.Data.Mappings
+namespace ES.Pedidos.Infra.Data.Mappings
 {
     public class VoucherMapping : IEntityTypeConfiguration<Voucher>
     {

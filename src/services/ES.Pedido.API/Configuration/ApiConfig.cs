@@ -1,4 +1,4 @@
-﻿using ES.Pedido.Infra.Data;
+﻿using ES.Pedidos.Infra.Data;
 using ES.WebAPI.Core.Identidade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

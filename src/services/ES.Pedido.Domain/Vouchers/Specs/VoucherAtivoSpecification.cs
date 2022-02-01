@@ -1,5 +1,4 @@
-﻿using ES.Pedido.Domain.Vouchers;
-using NetDevPack.Specification;
+﻿using NetDevPack.Specification;
 using System;
 using System.Linq.Expressions;
 

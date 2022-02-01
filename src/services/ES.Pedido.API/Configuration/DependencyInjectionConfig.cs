@@ -1,10 +1,10 @@
 ﻿using ES.Core.Mediator;
 using ES.Core.Mediator.Interfaces;
-using ES.Pedido.Domain.Interfaces;
-using ES.Pedido.Infra.Data;
-using ES.Pedido.Infra.Data.Repository;
 using ES.Pedidos.API.Application.Queries;
 using ES.Pedidos.API.Application.Queries.Interfaces;
+using ES.Pedidos.Domain.Interfaces;
+using ES.Pedidos.Infra.Data;
+using ES.Pedidos.Infra.Data.Repository;
 using ES.WebAPI.Core.Usuario;
 using ES.WebAPI.Core.Usuario.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -20,11 +20,14 @@ namespace ES.Pedidos.API.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAspNetUser, AspNetUser>();
 
+          
+
             // Application
             services.AddScoped<IMediatorHandler, MediatorHandler>();
             services.AddScoped<IVoucherQueries, VoucherQueries>();
 
             // Data
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IVoucherRepository, VoucherRepository>();
             services.AddScoped<PedidosContext>();
         }
