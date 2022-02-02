@@ -1,11 +1,9 @@
 ﻿using ES.Core.Data.Interfaces;
+using ES.Pedidos.Domain.Pedidos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ES.Pedidos.Domain.Pedidos;
 using System.Data.Common;
+using System.Threading.Tasks;
 
 namespace ES.Pedidos.Domain.Interfaces
 {
