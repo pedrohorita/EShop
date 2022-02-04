@@ -1,6 +1,7 @@
 ﻿using ES.Core.Communication;
 using ES.WebApp.MVC.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ES.WebApp.MVC.Interfaces
@@ -14,6 +15,12 @@ namespace ES.WebApp.MVC.Interfaces
         Task<ResponseResult> AtualizarItemCarrinho(Guid produtoId, ItemCarrinhoViewModel carrinho);
         Task<ResponseResult> RemoverItemCarrinho(Guid produtoId);
         Task<ResponseResult> AplicarVoucherCarrinho(string voucher);
+
+        // Pedido
+        Task<ResponseResult> FinalizarPedido(PedidoTransacaoViewModel pedidoTransacao);
+        Task<PedidoViewModel> ObterUltimoPedido();
+        Task<IEnumerable<PedidoViewModel>> ObterListaPorClienteId();
+        PedidoTransacaoViewModel MapearParaPedido(CarrinhoViewModel carrinho, EnderecoViewModel endereco);
 
     }
 }

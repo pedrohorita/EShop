@@ -34,8 +34,7 @@ namespace ES.Clientes.API.Data.Mappings
 
             // 1 : 1 => Aluno : Endereco
             builder.HasOne(c => c.Endereco)
-                .WithOne(c => c.Cliente)
-                .HasForeignKey<Endereco>(c => c.ClientId);
+                .WithOne(c => c.Cliente);
 
             builder.ToTable("Clientes");
         }

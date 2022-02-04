@@ -2,6 +2,7 @@
 using ES.Clientes.API.Models;
 using ES.Core.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -33,9 +34,19 @@ namespace ES.Clientes.API.Data.Repository
             _context.Clientes.Add(cliente);
         }
 
+        public async Task<Endereco> ObterEnderecoPorId(Guid id)
+        {
+            return await _context.Enderecos.FirstOrDefaultAsync(e => e.ClienteId == id);
+        }
+
+        public void AdicionarEndereco(Endereco endereco)
+        {
+            _context.Enderecos.Add(endereco);
+        }
+
         public void Dispose()
         {
-            _context?.Dispose();
+            _context.Dispose();
         }
     }
 }

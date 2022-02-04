@@ -27,7 +27,6 @@
     <ProjectReference Include="..\..\building blocks\ES.Core\ES.Core.csproj" />
     <ProjectReference Include="..\..\building blocks\ES.MessageBus\ES.MessageBus.csproj" />
     <ProjectReference Include="..\..\building blocks\ES.WebAPI.Core\ES.WebAPI.Core.csproj" />
-    <ProjectReference Include="..\ES.Cliente.API\ES.Clientes.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>
