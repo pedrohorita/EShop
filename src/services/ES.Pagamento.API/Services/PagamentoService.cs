@@ -57,7 +57,8 @@ namespace ES.Pagamentos.API.Services
             var transacaoAutorizada = transacoes?.FirstOrDefault(t => t.Status == StatusTransacao.Autorizado);
             var validationResult = new ValidationResult();
 
-            if (transacaoAutorizada == null) throw new DomainException($"Transação não encontrada para o pedido {pedidoId}");
+            if (transacaoAutorizada == null) 
+                throw new DomainException($"Transação não encontrada para o pedido {pedidoId}");
 
             var transacao = await _pagamentoFacade.CapturarPagamento(transacaoAutorizada);
 
@@ -89,7 +90,8 @@ namespace ES.Pagamentos.API.Services
             var transacaoAutorizada = transacoes?.FirstOrDefault(t => t.Status == StatusTransacao.Autorizado);
             var validationResult = new ValidationResult();
 
-            if (transacaoAutorizada == null) throw new DomainException($"Transação não encontrada para o pedido {pedidoId}");
+            if (transacaoAutorizada == null) 
+                throw new DomainException($"Transação não encontrada para o pedido {pedidoId}");
 
             var transacao = await _pagamentoFacade.CancelarAutorizacao(transacaoAutorizada);
 
