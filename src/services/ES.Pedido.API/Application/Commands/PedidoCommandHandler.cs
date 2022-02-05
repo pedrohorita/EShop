@@ -1,4 +1,6 @@
 ﻿using ES.Core.Messages;
+using ES.Core.Messages.Integration;
+using ES.MessageBus.Interfaces;
 using ES.Pedidos.API.Application.DTO;
 using ES.Pedidos.API.Application.Events;
 using ES.Pedidos.Domain.Interfaces;
@@ -17,12 +19,15 @@ namespace ES.Pedidos.API.Application.Commands
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly IVoucherRepository _voucherRepository;
+        private readonly IMessageBus _bus;
 
         public PedidoCommandHandler(IVoucherRepository voucherRepository,
-                                    IPedidoRepository pedidoRepository)
+                                    IPedidoRepository pedidoRepository,
+                                    IMessageBus bus)
         {
             _voucherRepository = voucherRepository;
             _pedidoRepository = pedidoRepository;
+            _bus = bus;
         }
 
         public async Task<ValidationResult> Handle(AdicionarPedidoCommand message, CancellationToken cancellationToken)
@@ -43,7 +48,7 @@ namespace ES.Pedidos.API.Application.Commands
                 return ValidationResult;
 
             // Processar pagamento
-            if (!ProcessarPagamento(pedido)) 
+            if (!await ProcessarPagamento(pedido, message)) 
                 return ValidationResult;
 
             // Se pagamento tudo ok!
@@ -81,7 +86,8 @@ namespace ES.Pedidos.API.Application.Commands
 
         private async Task<bool> AplicarVoucher(AdicionarPedidoCommand message, Pedido pedido)
         {
-            if (!message.VoucherUtilizado) return true;
+            if (!message.VoucherUtilizado) 
+                return true;
 
             var voucher = await _voucherRepository.ObterVoucherPorCodigo(message.VoucherCodigo);
             if (voucher == null)
@@ -127,9 +133,32 @@ namespace ES.Pedidos.API.Application.Commands
             return true;
         }
 
-        public bool ProcessarPagamento(Pedido pedido)
+        public async Task<bool> ProcessarPagamento(Pedido pedido, AdicionarPedidoCommand message)
         {
-            return true;
+            var pedidoIniciado = new PedidoIniciadoIntegrationEvent
+            {
+                PedidoId = pedido.Id,
+                ClienteId = pedido.ClienteId,
+                Valor = pedido.ValorTotal,
+                TipoPagamento = 1, // fixo. Alterar se tiver mais tipos
+                NomeCartao = message.NomeCartao,
+                NumeroCartao = message.NumeroCartao,
+                MesAnoVencimento = message.ExpiracaoCartao,
+                CVV = message.CvvCartao
+            };
+
+            var result = await _bus
+                .RequestAsync<PedidoIniciadoIntegrationEvent, ResponseMessage>(pedidoIniciado);
+
+            if (result.ValidationResult.IsValid) 
+                return true;
+
+            foreach (var erro in result.ValidationResult.Errors)
+            {
+                AdicionarErro(erro.ErrorMessage);
+            }
+
+            return false;
         }
     }
 }
