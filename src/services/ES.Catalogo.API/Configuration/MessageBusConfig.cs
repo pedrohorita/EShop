@@ -1,10 +1,10 @@
-﻿using ES.Core.Extensions;
+﻿using ES.Catalogo.API.Services;
+using ES.Core.Extensions;
 using ES.MessageBus.Configuration;
-using ES.Pedidos.API.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ES.Pedidos.API.Configuration
+namespace ES.Catalogo.API.Configuration
 {
     public static class MessageBusConfig
     {
@@ -12,8 +12,7 @@ namespace ES.Pedidos.API.Configuration
             IConfiguration configuration)
         {
             services.AddMessageBus(configuration.GetMessageQueueConnection("MessageBus"))
-                .AddHostedService<PedidoOrquestradorIntegrationHandler>()
-                .AddHostedService<PedidoIntegrationHandler>();
+                .AddHostedService<CatalogoIntegrationHandler>();
         }
     }
 }
