@@ -12,14 +12,14 @@ namespace ES.Bff.Compras.Controllers
     [Authorize]
     public class CarrinhoController : MainController
     {
-
         private readonly ICarrinhoService _carrinhoService;
         private readonly ICatalogoService _catalogoService;
         private readonly IPedidoService _pedidoService;
 
-        public CarrinhoController(ICarrinhoService carrinhoService,
-                                  ICatalogoService catalogoService,
-                                  IPedidoService pedidoService)
+        public CarrinhoController(
+            ICarrinhoService carrinhoService,
+            ICatalogoService catalogoService,
+            IPedidoService pedidoService)
         {
             _carrinhoService = carrinhoService;
             _catalogoService = catalogoService;
@@ -108,11 +108,8 @@ namespace ES.Bff.Compras.Controllers
 
         private async Task ValidarItemCarrinho(ItemProdutoDTO produto, int quantidade, bool adicionarProduto = false)
         {
-            if (produto == null) 
-                AdicionarErroProcessamento("Produto inexistente!");
-
-            if (quantidade < 1) 
-                AdicionarErroProcessamento($"Escolha ao menos uma unidade do produto {produto.Nome}");
+            if (produto == null) AdicionarErroProcessamento("Produto inexistente!");
+            if (quantidade < 1) AdicionarErroProcessamento($"Escolha ao menos uma unidade do produto {produto.Nome}");
 
             var carrinho = await _carrinhoService.ObterCarrinho();
             var itemCarrinho = carrinho.Itens.FirstOrDefault(p => p.ProdutoId == produto.Id);
@@ -123,8 +120,7 @@ namespace ES.Bff.Compras.Controllers
                 return;
             }
 
-            if (quantidade > produto.QuantidadeEstoque) 
-                AdicionarErroProcessamento($"O produto {produto.Nome} possui {produto.QuantidadeEstoque} unidades em estoque, você selecionou {quantidade}");
+            if (quantidade > produto.QuantidadeEstoque) AdicionarErroProcessamento($"O produto {produto.Nome} possui {produto.QuantidadeEstoque} unidades em estoque, você selecionou {quantidade}");
         }
     }
 }

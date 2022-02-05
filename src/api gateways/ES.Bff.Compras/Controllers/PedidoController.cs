@@ -19,10 +19,11 @@ namespace ES.Bff.Compras.Controllers
         private readonly IPedidoService _pedidoService;
         private readonly IClienteService _clienteService;
 
-        public PedidoController(ICatalogoService catalogoService,
-                                ICarrinhoService carrinhoService,
-                                IPedidoService pedidoService,
-                                IClienteService clienteService)
+        public PedidoController(
+            ICatalogoService catalogoService,
+            ICarrinhoService carrinhoService,
+            IPedidoService pedidoService,
+            IClienteService clienteService)
         {
             _catalogoService = catalogoService;
             _carrinhoService = carrinhoService;
